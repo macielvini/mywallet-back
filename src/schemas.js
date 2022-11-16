@@ -9,3 +9,12 @@ export const validateSignup = (obj) => {
 
   return signupSchema.validate(obj, { abortEarly: false });
 };
+
+export const validateSignin = (obj) => {
+  const signinSchema = joi.object({
+    email: joi.string().email().required(),
+    password: joi.string().required(),
+  });
+
+  return signinSchema.validate(obj, { abortEarly: false });
+};
