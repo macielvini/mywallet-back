@@ -32,9 +32,26 @@
 - [x] validation for valid transaction types
 - [x] insert on statements collection
 
+### `delete` Statements
+
+- [ ] body = { id }
+- [ ] validate token
+
+### `put` Statements
+
+- [ ] body = { id, description, amount, transaction }
+- [ ] validate body with joi
+- [ ] validate token
+- [ ] find and update statement
+
 ### Next steps
 
 - [ ] `get` **Statements** pagination by month
 - [ ] Delete inactive users (30 days)
-- [ ] `delete` user can delete statement record
+- [ ] `delete` **undo delete**
+  - [ ] new statement property: `timestamp`
+  - [ ] statements are sorted by `timestamp`
+  - [ ] deletes from `statements`, add to `trash`
+  - [ ] `trash` documents last for 60 seconds (max undo time)
+  - [ ] when undo, delete from `trash`, add to `statements`
 - [ ] `put` update statement record

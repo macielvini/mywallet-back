@@ -18,6 +18,9 @@ export const getStatement = async (req, res) => {
         ownerId: ObjectID(session.userId),
       })
       .toArray();
+
+    records.forEach((r) => delete r.ownerId);
+
     res.send(records);
   } catch (error) {
     console.log(error);
@@ -43,6 +46,7 @@ export const addStatement = async (req, res) => {
     if (!session) return res.sendStatus(401);
 
     await statementsCollection.insertOne({
+      timestamp: Date.now(),
       ownerId: session.userId,
       date: dayjs(Date.now()).format("DD/MM"),
       ...body,
