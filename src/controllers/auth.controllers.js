@@ -1,7 +1,6 @@
-import express from "express";
 import bcrypt from "bcrypt";
 import { v4 as uuid } from "uuid";
-import { sessionsCollection, usersCollection } from "../app.js";
+import { sessionsCollection, usersCollection } from "../database/db.js";
 import { validateSignin, validateSignup } from "../schemas/authSchemas.js";
 import { ObjectId } from "mongodb";
 

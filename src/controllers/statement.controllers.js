@@ -1,6 +1,6 @@
 import { ObjectID } from "bson";
 import dayjs from "dayjs";
-import { sessionsCollection, statementsCollection } from "../app.js";
+import { sessionsCollection, statementsCollection } from "../database/db.js";
 import { validateStatement } from "../schemas/statementSchemas.js";
 
 export const getStatement = async (req, res) => {
