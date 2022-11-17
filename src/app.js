@@ -1,9 +1,13 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+
 import { MongoClient } from "mongodb";
 import { signIn, signUp } from "./controllers/auth.controllers.js";
-import { getStatement } from "./controllers/statement.controllers.js";
+import {
+  addStatement,
+  getStatement,
+} from "./controllers/statement.controllers.js";
 
 const app = express();
 
@@ -34,8 +38,8 @@ app.get("/statement", getStatement);
 
 //POST
 app.post("/sign-up", signUp);
-
 app.post("/sign-in", signIn);
+app.post("/statement", addStatement);
 
 //port
 app.listen(5000, () => console.log("Server running in port 5000"));
