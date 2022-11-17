@@ -48,8 +48,9 @@ export const addStatement = async (req, res) => {
       ...body,
     });
 
-    res.send("ok");
+    res.send(200);
   } catch (error) {
     console.log(error);
+    res.sendStatus(500);
   }
 };

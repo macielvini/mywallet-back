@@ -27,10 +27,10 @@
 
 ### `post` Statements
 
-- [ ] body = { description, amount, transaction: in/out }
-- [ ] validate token
-- [ ] validation for valid transaction types
-- [ ] insert on statements collection
+- [x] body = { description, amount, transaction: in/out }
+- [x] validate token
+- [x] validation for valid transaction types
+- [x] insert on statements collection
 
 ### Next steps
 
