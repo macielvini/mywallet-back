@@ -11,6 +11,8 @@ export const getStatement = async (req, res) => {
 
   try {
     const session = await sessionsCollection.findOne({ token: token });
+    if (!session) return res.sendStatus(401);
+
     const records = await statementsCollection
       .find({
         ownerId: ObjectID(session.userId),
