@@ -2,7 +2,7 @@
 
 ### General
 
-- [ ] validate body fields using Joi
+- [x] validate body fields using Joi
 
 ### `post` Sign-up
 
@@ -20,10 +20,10 @@
 
 ### `get` Statements
 
-- [ ] new statements collection
-- [ ] validate token
-- [ ] document template { id, ownerId, date: DD/MM, description, amount, transaction: in/out }
-- [ ] return array of user's statements
+- [x] new statements collection
+- [x] validate token
+- [x] document template { id, ownerId, date: DD/MM, description, amount, transaction: in/out }
+- [x] return array of user's statements
 
 ### `post` Statements
 

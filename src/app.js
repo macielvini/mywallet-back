@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { MongoClient } from "mongodb";
 import { signIn, signUp } from "./controllers/auth.controllers.js";
+import { getStatement } from "./controllers/statement.controllers.js";
 
 const app = express();
 
@@ -27,6 +28,9 @@ export const statementsCollection = db.collection("statements");
 export const sessionsCollection = db.collection("sessions");
 
 //code
+
+//GET
+app.get("/statement", getStatement);
 
 //POST
 app.post("/sign-up", signUp);
