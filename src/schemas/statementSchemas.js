@@ -1,6 +1,6 @@
 import joi from "joi";
 
-export const validateStatementSchema = (obj) => {
+export const addStatementSchema = (obj) => {
   const schema = joi.object({
     description: joi.string().required(),
     amount: joi.number().required(),

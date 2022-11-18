@@ -34,8 +34,8 @@
 
 ### `delete` Statements
 
-- [ ] params = { id }
-- [ ] validate token
+- [x] params = { id }
+- [x] validate token
 
 ### `put` Statements
 

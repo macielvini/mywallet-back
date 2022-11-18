@@ -1,6 +1,6 @@
 import joi from "joi";
 
-export const validateSignupSchema = (obj) => {
+export const signupSchema = (obj) => {
   const signupSchema = joi.object({
     name: joi.string().alphanum().min(3).required(),
     email: joi.string().email().required(),
@@ -10,7 +10,7 @@ export const validateSignupSchema = (obj) => {
   return signupSchema.validate(obj, { abortEarly: false });
 };
 
-export const validateSigninSchema = (obj) => {
+export const signinSchema = (obj) => {
   const signinSchema = joi.object({
     email: joi.string().email().required(),
     password: joi.string().required(),
