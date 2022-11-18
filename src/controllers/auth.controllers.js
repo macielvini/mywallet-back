@@ -21,7 +21,7 @@ export const signUp = async (req, res) => {
       password: encryptedPassword,
       lastStatus: Date.now(),
     });
-    res.sendStatus(200);
+    res.sendStatus(201);
   } catch (error) {
     res.send(500);
   }

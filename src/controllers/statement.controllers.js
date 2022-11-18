@@ -32,7 +32,7 @@ export const addStatement = async (req, res) => {
       ...body,
     });
 
-    res.send(200);
+    res.send(201);
   } catch (error) {
     console.log(error);
     res.sendStatus(500);
