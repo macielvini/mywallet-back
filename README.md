@@ -49,7 +49,7 @@
 - [ ] `get` **Statements** pagination by month
 - [ ] Delete inactive users (30 days)
 - [ ] `delete` **undo delete**
-  - [ ] new statement property: `timestamp`
+  - [x] new statement property: `timestamp`
   - [ ] statements are sorted by `timestamp`
   - [ ] deletes from `statements`, add to `trash`
   - [ ] `trash` documents last for 60 seconds (max undo time)
