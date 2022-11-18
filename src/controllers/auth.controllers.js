@@ -1,13 +1,16 @@
 import bcrypt from "bcrypt";
 import { v4 as uuid } from "uuid";
 import { sessionsCollection, usersCollection } from "../database/db.js";
-import { validateSignin, validateSignup } from "../schemas/authSchemas.js";
+import {
+  validateSigninSchema,
+  validateSignupSchema,
+} from "../schemas/authSchemas.js";
 import { ObjectId } from "mongodb";
 
 export const signUp = async (req, res) => {
   const body = req.body;
 
-  const { error } = validateSignup(body);
+  const { error } = validateSignupSchema(body);
   if (error) {
     const errors = error.details.map((e) => e.message);
     return res.status(422).send(errors);
@@ -30,7 +33,7 @@ export const signUp = async (req, res) => {
 export const signIn = async (req, res) => {
   const body = req.body;
 
-  const { error } = validateSignin(body);
+  const { error } = validateSigninSchema(body);
   if (error) {
     const errors = error.details.map((e) => e.message);
     return res.status(422).send(errors);

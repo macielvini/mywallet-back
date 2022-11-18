@@ -1,7 +1,7 @@
 import { ObjectID } from "bson";
 import dayjs from "dayjs";
 import { sessionsCollection, statementsCollection } from "../database/db.js";
-import { validateStatement } from "../schemas/statementSchemas.js";
+import { validateStatementSchema } from "../schemas/statementSchemas.js";
 
 export const getStatement = async (req, res) => {
   const { authorization } = req.headers;
@@ -33,7 +33,7 @@ export const addStatement = async (req, res) => {
 
   if (!token) return res.sendStatus(401);
 
-  const { error } = validateStatement(body);
+  const { error } = validateStatementSchema(body);
   if (error) {
     const errors = error.details.map((e) => e.message);
     return res.status(422).send(errors);
@@ -51,6 +51,27 @@ export const addStatement = async (req, res) => {
     });
 
     res.send(200);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+};
+
+export const deleteStatement = async (req, res) => {
+  const { id } = req.params;
+  const { authorization } = req.headers;
+  const token = authorization?.replace("Bearer ", "");
+
+  try {
+    const session = await sessionsCollection.findOne({ token: token });
+    if (!session) return res.sendStatus(401);
+
+    const record = await statementsCollection.findOne({ _id: ObjectID(id) });
+    if (!record) res.sendStatus(404);
+
+    await statementsCollection.deleteOne({ _id: record._id });
+
+    res.sendStatus(200);
   } catch (error) {
     console.log(error);
     res.sendStatus(500);
