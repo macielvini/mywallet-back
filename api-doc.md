@@ -20,9 +20,9 @@
   }
   ```
 
-- returns `{ token : "access-token" }`
+- returns on data: `{ token : "access-token", name: "username" }`
 
-### `GET` "/statements"
+### `GET` "/statement"
 
 - ```JSX
   {
@@ -53,7 +53,7 @@
   ]
   ```
 
-### `POST` "/statements"
+### `POST` "/statement"
 
 - ```JSX
   {
@@ -73,7 +73,7 @@
 
 returns `201`
 
-### `DELETE` "/statements/id"
+### `DELETE` "/statement/id"
 
 - ```JSX
   {
