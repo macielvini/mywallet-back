@@ -60,7 +60,7 @@ export const signIn = async (req, res) => {
       return res.send({ token: newToken });
     }
 
-    res.send({ token: session.token });
+    res.send({ token: session.token, name: user.name });
   } catch (error) {
     res.sendStatus(500);
   }

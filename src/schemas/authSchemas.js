@@ -2,7 +2,7 @@ import joi from "joi";
 
 export const signupSchema = (obj) => {
   const signupSchema = joi.object({
-    name: joi.string().alphanum().min(3).required(),
+    name: joi.string().min(3).required(),
     email: joi.string().email().required(),
     password: joi.string().required(),
     password_confirmation: joi
@@ -19,7 +19,7 @@ export const signupSchema = (obj) => {
 export const signinSchema = (obj) => {
   const signinSchema = joi.object({
     email: joi.string().email().required(),
-    password: joi.string().required().label("Password"),
+    password: joi.string().required(),
   });
 
   return signinSchema.validate(obj, { abortEarly: false });
