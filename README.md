@@ -22,14 +22,14 @@
 
 - [x] new statements collection
 - [x] validate token
-- [x] document template { id, ownerId, date: DD/MM, description, amount, transaction: in/out }
+- [x] document template { id, ownerId, date: DD/MM, description, amount, type: in/out }
 - [x] return array of user's statements
 
 ### `post` Statements
 
-- [x] body = { description, amount, transaction: in/out }
+- [x] body = { description, amount, type: in/out }
 - [x] validate token
-- [x] validation for valid transaction types
+- [x] validation for valid type types
 - [x] insert on statements collection
 
 ### `delete` Statements
@@ -39,7 +39,7 @@
 
 ### `put` Statements
 
-- [ ] body = { id, description, amount, transaction }
+- [ ] body = { id, description, amount, type }
 - [ ] validate body with joi
 - [ ] validate token
 - [ ] find and update statement

@@ -11,7 +11,10 @@ export const getStatement = async (req, res) => {
         ownerId: ObjectID(session.userId),
       })
       .toArray();
-    records.forEach((r) => delete r.ownerId);
+    records.forEach((r) => {
+      delete r.ownerId;
+      delete r.timestamp;
+    });
 
     res.send(records.reverse());
   } catch (error) {

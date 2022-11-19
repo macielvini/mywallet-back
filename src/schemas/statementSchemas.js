@@ -4,7 +4,7 @@ export const addStatementSchema = (obj) => {
   const schema = joi.object({
     description: joi.string().required(),
     amount: joi.number().required(),
-    transaction: joi.string().valid("in", "out").required(),
+    type: joi.string().valid("in", "out").required(),
   });
 
   return schema.validate(obj, { abortEarly: false });
