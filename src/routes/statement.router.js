@@ -15,7 +15,7 @@ const router = Router();
 router.use(validateToken);
 router.get("/statement", getStatement);
 router.delete("/statement/:id", validateStatementId, deleteStatement);
-router.put("/statement/:id", updateStatement);
+router.put("/statement/:id", validateStatementId, updateStatement);
 // router.use(validateStatementSchema);
 router.post("/statement", validateStatementSchema, addStatement);
 

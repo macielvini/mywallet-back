@@ -8,7 +8,7 @@ export const getStatement = async (req, res) => {
   try {
     const records = await statementsCollection
       .find({
-        ownerId: ObjectID(session.userId),
+        ownerId: ObjectId(session.userId),
       })
       .toArray();
     records.forEach((r) => {
