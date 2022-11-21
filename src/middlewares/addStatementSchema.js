@@ -1,4 +1,4 @@
-import { addStatementSchema } from "../schemas/statementSchemas.js";
+import { addStatementSchema } from "../models/statementSchemas.js";
 
 export const validateStatementSchema = async (req, res, next) => {
   const body = req.body;

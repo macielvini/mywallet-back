@@ -1,17 +1,11 @@
 import bcrypt from "bcrypt";
 import { v4 as uuid } from "uuid";
 import { sessionsCollection, usersCollection } from "../database/db.js";
-import { signinSchema, signupSchema } from "../schemas/authSchemas.js";
+import { signinSchema } from "../models/authSchemas.js";
 import { ObjectId } from "mongodb";
 
 export const signUp = async (req, res) => {
   const body = req.body;
-
-  const { error } = signupSchema(body);
-  if (error) {
-    const errors = error.details.map((e) => e.message);
-    return res.status(422).send(errors);
-  }
 
   const encryptedPassword = bcrypt.hashSync(body.password, 10);
 

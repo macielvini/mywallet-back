@@ -1,13 +1,15 @@
-import { signupSchema, signinSchema } from "../schemas/authSchemas.js";
+import { signinSchema, signUpSchema } from "../models/authSchemas.js";
 
 export const validateSignUp = async (req, res, next) => {
   const body = req.body;
 
-  const { error } = signupSchema(body);
+  const { error } = signUpSchema.validate(body, { abortEarly: false });
   if (error) {
     const errors = error.details.map((e) => e.message);
-    return res.status(422).send(errors);
+    return res.status(422).send({ message: errors });
   }
+
+  delete body.password_confirmation;
 
   next();
 };

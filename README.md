@@ -54,4 +54,5 @@
   - [ ] deletes from `statements`, add to `trash`
   - [ ] `trash` documents last for 60 seconds (max undo time)
   - [ ] when undo, delete from `trash`, add to `statements`
-- [ ] `put` update statement record
+- [x] `put` update statement record
+- [ ] unique e-mail
