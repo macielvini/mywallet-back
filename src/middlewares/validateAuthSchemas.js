@@ -12,7 +12,20 @@ export const validateSignUp = async (req, res, next) => {
     return res.status(422).send({ message: errors });
   }
 
-  delete body.password_confirmation;
+  try {
+    const findEmail = await usersCollection.findOne({
+      email: body.email,
+    });
+
+    if (findEmail) {
+      return res.status(422).send({ message: "E-mail already exist!" });
+    }
+
+    delete body.password_confirmation;
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(500);
+  }
 
   next();
 };
