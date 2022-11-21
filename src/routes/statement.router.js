@@ -6,9 +6,9 @@ import {
   updateStatement,
 } from "../controllers/statement.controllers.js";
 
-import { validateToken } from "../middlewares/validateToken.js";
-import { validateStatementSchema } from "../middlewares/addStatementSchema.js";
-import { validateStatementId } from "../middlewares/validateStatementId.js";
+import { validateToken } from "../middlewares/tokenValidation.middleware.js";
+import { validateStatementSchema } from "../middlewares/statementValidation.middleware.js";
+import { validateStatementId } from "../middlewares/statementIdValidation.middleware.js";
 
 const router = Router();
 

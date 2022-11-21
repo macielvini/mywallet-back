@@ -3,7 +3,7 @@ import { Router } from "express";
 import {
   validateSignIn,
   validateSignUp,
-} from "../middlewares/validateAuthSchemas.js";
+} from "../middlewares/auth.middleware.js";
 
 const router = Router();
 
