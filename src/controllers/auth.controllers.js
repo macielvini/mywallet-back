@@ -1,7 +1,6 @@
 import bcrypt from "bcrypt";
 import { v4 as uuid } from "uuid";
 import { sessionsCollection, usersCollection } from "../database/db.js";
-import { signinSchema } from "../models/authSchemas.js";
 import { ObjectId } from "mongodb";
 
 export const signUp = async (req, res) => {
@@ -22,29 +21,14 @@ export const signUp = async (req, res) => {
 };
 
 export const signIn = async (req, res) => {
-  const body = req.body;
-
-  const { error } = signinSchema(body);
-  if (error) {
-    const errors = error.details.map((e) => e.message);
-    return res.status(422).send(errors);
-  }
+  const { user } = req;
 
   try {
-    const user = await usersCollection.findOne({ email: body.email });
-    if (!user) {
-      return res.sendStatus(401);
-    }
-
-    if (!bcrypt.compareSync(body.password, user.password)) {
-      return res.sendStatus(401);
-    }
-
-    const session = await sessionsCollection.findOne({
+    const userSession = await sessionsCollection.findOne({
       userId: ObjectId(user._id),
     });
 
-    if (!session?.token) {
+    if (!userSession?.token) {
       const newToken = uuid();
       await sessionsCollection.insertOne({
         userId: user._id,
@@ -54,7 +38,7 @@ export const signIn = async (req, res) => {
       return res.send({ token: newToken });
     }
 
-    res.send({ token: session.token, name: user.name });
+    res.send({ token: userSession.token, name: user.name });
   } catch (error) {
     res.sendStatus(500);
   }

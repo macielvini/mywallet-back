@@ -12,11 +12,7 @@ export const signUpSchema = joi.object({
     .options({ messages: { "any.only": "{{#label}} does not match" } }),
 });
 
-export const signinSchema = (obj) => {
-  const signinSchema = joi.object({
-    email: joi.string().email().required(),
-    password: joi.string().required(),
-  });
-
-  return signinSchema.validate(obj, { abortEarly: false });
-};
+export const signInSchema = joi.object({
+  email: joi.string().email().required(),
+  password: joi.string().required(),
+});
