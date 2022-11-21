@@ -1,4 +1,4 @@
-import { ObjectID } from "bson";
+import { ObjectId } from "mongodb";
 import dayjs from "dayjs";
 import { statementsCollection } from "../database/db.js";
 
@@ -43,17 +43,34 @@ export const addStatement = async (req, res) => {
 };
 
 export const deleteStatement = async (req, res) => {
-  const { id } = req.params;
+  const { record } = req;
 
   try {
-    const record = await statementsCollection.findOne({ _id: ObjectID(id) });
-    if (!record) res.sendStatus(404);
-
     await statementsCollection.deleteOne({ _id: record._id });
 
     res.sendStatus(200);
   } catch (error) {
     console.log(error);
+    res.sendStatus(500);
+  }
+};
+
+export const updateStatement = async (req, res) => {
+  const { body } = req;
+  const { id } = req.params;
+
+  try {
+    const statementItem = await statementsCollection.findOne({
+      _id: ObjectId(id),
+    });
+
+    await statementsCollection.updateOne(
+      { _id: statementItem._id },
+      { $set: body }
+    );
+
+    res.sendStatus(200);
+  } catch (error) {
     res.sendStatus(500);
   }
 };
